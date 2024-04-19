@@ -3,6 +3,8 @@ package dw.firstapp.controller;
 import dw.firstapp.model.Employee;
 import dw.firstapp.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,28 +21,28 @@ public class EmployeeController {
     }
 
     @PostMapping("/api/employee") //직원 생성
-    public Employee saveEmployee(@RequestBody Employee employee){
-        // Service   //service로 던짐
-        return employeeService.saveEmployee(employee);
+    public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee){
+        //service로 던짐
+        return new ResponseEntity<>(employeeService.saveEmployee(employee), HttpStatus.OK);
     }
 
     @GetMapping("/api/employees")  // 직원 전체 조회
-    public List<Employee> getAllEmployees(){
-        return employeeService.getAllEmployees();
+    public ResponseEntity<List<Employee>> getAllEmployees(){
+        return new ResponseEntity<>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
 
     @GetMapping("/api/employee/{id}")  // 아이디로 직원 한명 조회
-    public Employee getEmployeeById(@PathVariable long id){
-        return employeeService.getEmployeeById(id);
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable long id){
+        return new ResponseEntity<>(employeeService.getEmployeeById(id), HttpStatus.OK);
     }
 
     @PutMapping("/api/employee/{id}") // 업데이트
-    public Employee updateEmployeeById(@PathVariable long id, @RequestBody Employee employee){
-        return employeeService.updateEmployeeById(id, employee);
+    public ResponseEntity<Employee> updateEmployeeById(@PathVariable long id, @RequestBody Employee employee){
+        return new ResponseEntity<>(employeeService.updateEmployeeById(id, employee), HttpStatus.OK);
     }
 
     @DeleteMapping("/api/employee/{id}")  //삭제
-    public Employee deleteEmployeeById(@PathVariable long id){
-        return employeeService.deleteEmployeeById(id);
+    public ResponseEntity<Employee> deleteEmployeeById(@PathVariable long id){
+        return new ResponseEntity<>(employeeService.deleteEmployeeById(id), HttpStatus.OK);
     }
 }
