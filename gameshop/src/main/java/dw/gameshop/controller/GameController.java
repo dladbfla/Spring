@@ -34,8 +34,19 @@ public class GameController {
         return new ResponseEntity<>(gameService.updateGameById(id, game), HttpStatus.OK);
     }
 
-    @PostMapping("/products/user")
+    @PostMapping("/products/user")  //유저 생성
     public ResponseEntity<User> saveUser(@RequestBody User user){
         return new ResponseEntity<>(gameService.saveUser(user), HttpStatus.OK);
     }
+
+    @GetMapping("/products/maxprice") //가장 비싼 게임
+    public ResponseEntity<Game> getGameWithMaxPrice(){
+        return new ResponseEntity<>(gameService.getGameWithMaxPrice(), HttpStatus.OK);
+    }
+
+    @GetMapping("/products/maxpricetop3")  //비싼게임 top3
+    public ResponseEntity<List<Game>> getGameWithMaxPriceTop3(){
+        return new ResponseEntity<>(gameService.getGameWithMaxPriceTop3(), HttpStatus.OK);
+    }
+
 }

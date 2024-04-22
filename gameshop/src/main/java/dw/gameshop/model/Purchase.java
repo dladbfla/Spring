@@ -20,12 +20,15 @@ public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @ManyToOne
-    @JoinColumn(name = "game_id")
+    @JoinColumn(name = "game_id",nullable = false)
     private Game game;
+
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
     @Column(name = "purchase_time")
     private LocalDateTime purchaseTime;
 

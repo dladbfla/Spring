@@ -1,5 +1,6 @@
 package dw.gameshop.repository;
 
+import dw.gameshop.model.Game;
 import dw.gameshop.model.Purchase;
 import dw.gameshop.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,4 +11,5 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
     //JPA method 명명법에 의거하여 올바른 작명을 해야함
     //스펙에 명시된 명명법을 제대로 따르기만 하면 JPA가 스펙의 규칙대로 구동됨
     List<Purchase> findByUser(User user);
+    List<Purchase> findByGame(Game game);
 }
