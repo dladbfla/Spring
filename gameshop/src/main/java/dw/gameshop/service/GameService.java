@@ -19,13 +19,11 @@ public class GameService {
     GameRepository gameRepository;
     UserRepository userRepository;
 
+    @Autowired
     public GameService(GameRepository gameRepository, UserRepository userRepository) {
         this.gameRepository = gameRepository;
         this.userRepository = userRepository;
     }
-
-    @Autowired
-
 
     public List<Game> getAllGames(){
         return gameRepository.findAll();

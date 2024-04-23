@@ -1,7 +1,6 @@
 package dw.gameshop.controller;
 
 import dw.gameshop.model.Purchase;
-import dw.gameshop.model.User;
 import dw.gameshop.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

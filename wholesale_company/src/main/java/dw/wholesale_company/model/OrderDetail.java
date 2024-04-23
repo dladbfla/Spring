@@ -20,5 +20,66 @@ public class OrderDetail {  /*주문번호	제품번호	단가	주문수량	할�
     @Column(name = "주문수량")
     private int orderQuantity;
     @Column(name = "할인율")
-    private int discountRate;
+    private float discountRate;
+
+    public OrderDetail() {
+    }
+
+    public OrderDetail(long orderDetailId, Order order, Product product, int unitPrice, int orderQuantity,
+                       float discountRate) {
+        this.orderDetailId = orderDetailId;
+        this.order = order;
+        this.product = product;
+        this.unitPrice = unitPrice;
+        this.orderQuantity = orderQuantity;
+        this.discountRate = discountRate;
+    }
+
+    public long getOrderDetailId() {
+        return orderDetailId;
+    }
+
+    public void setOrderDetailId(long orderDetailId) {
+        this.orderDetailId = orderDetailId;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public int getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(int unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public int getOrderQuantity() {
+        return orderQuantity;
+    }
+
+    public void setOrderQuantity(int orderQuantity) {
+        this.orderQuantity = orderQuantity;
+    }
+
+    public float getDiscountRate() {
+        return discountRate;
+    }
+
+    public void setDiscountRate(float discountRate) {
+        this.discountRate = discountRate;
+    }
 }
