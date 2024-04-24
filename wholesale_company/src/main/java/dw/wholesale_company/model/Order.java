@@ -1,11 +1,8 @@
 package dw.wholesale_company.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "주문")
@@ -13,22 +10,24 @@ public class Order {  /*주문번호	고객번호	사원번호	주문일	요청�
     @Id
     @Column(name = "주문번호")
     private String orderId;
-    @Column(name = "고객번호")
-    private String customer;
-    @Column(name = "사원번호")
-    private String employee;
+    @ManyToOne
+    @JoinColumn(name = "고객번호")
+    private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "사원번호")
+    private Employee employee;
     @Column(name = "주문일")
-    private LocalDateTime orderDate;
+    private LocalDate orderDate;
     @Column(name = "요청일")
-    private LocalDateTime requestDate;
+    private LocalDate requestDate;
     @Column(name = "발송일")
-    private LocalDateTime shippingDate;
+    private LocalDate shippingDate;
 
     public Order() {
     }
 
-    public Order(String orderId, String customer, String employee, LocalDateTime orderDate, LocalDateTime requestDate,
-                 LocalDateTime shippingDate) {
+    public Order(String orderId, Customer customer, Employee employee, LocalDate orderDate, LocalDate requestDate,
+                 LocalDate shippingDate) {
         this.orderId = orderId;
         this.customer = customer;
         this.employee = employee;
@@ -45,43 +44,43 @@ public class Order {  /*주문번호	고객번호	사원번호	주문일	요청�
         this.orderId = orderId;
     }
 
-    public String getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(String customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
-    public String getEmployee() {
+    public Employee getEmployee() {
         return employee;
     }
 
-    public void setEmployee(String employee) {
+    public void setEmployee(Employee employee) {
         this.employee = employee;
     }
 
-    public LocalDateTime getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(LocalDateTime orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 
-    public LocalDateTime getRequestDate() {
+    public LocalDate getRequestDate() {
         return requestDate;
     }
 
-    public void setRequestDate(LocalDateTime requestDate) {
+    public void setRequestDate(LocalDate requestDate) {
         this.requestDate = requestDate;
     }
 
-    public LocalDateTime getShippingDate() {
+    public LocalDate getShippingDate() {
         return shippingDate;
     }
 
-    public void setShippingDate(LocalDateTime shippingDate) {
+    public void setShippingDate(LocalDate shippingDate) {
         this.shippingDate = shippingDate;
     }
 }

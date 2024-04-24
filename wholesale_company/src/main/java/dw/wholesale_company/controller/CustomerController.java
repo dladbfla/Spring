@@ -28,4 +28,11 @@ public class CustomerController {
     public ResponseEntity<List<Customer>> getCustomerAboveAverage(){
         return new ResponseEntity<>(customerService.getCustomerAboveAverage(), HttpStatus.OK);
     }
+
+    //선생님코드
+    @GetMapping("/customers/highmilethanavg")
+    public ResponseEntity<List<Customer>> getCustomerWithHighMileThanAvg() {
+        return new ResponseEntity<>(customerService.getCustomerWithHighMileThanAvg(),
+                HttpStatus.OK);
+    }
 }

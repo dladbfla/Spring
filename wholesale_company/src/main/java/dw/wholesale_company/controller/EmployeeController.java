@@ -24,4 +24,11 @@ public class EmployeeController {
     public ResponseEntity<Employee> getEmployeeRecentlyHired(){
         return new ResponseEntity<>(employeeService.getEmployeeRecentlyHired(), HttpStatus.OK);
     }
+
+    //선생님코드
+    @GetMapping("/employees/hiredate/latest")
+    public ResponseEntity<Employee> getEmployeeByHireLatest() {
+        return new ResponseEntity<>(employeeService.getEmployeeByHireLatest(),
+                HttpStatus.OK);
+    }
 }

@@ -1,9 +1,6 @@
 package dw.wholesale_company.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -35,15 +32,16 @@ public class Employee {  /*사원번호	이름	영문이름	직위	성별	생일
     private String telephoneNo;
     @Column(name = "상사번호")
     private String managerId;
-    @Column(name = "부서번호")
-    private String department;
+    @ManyToOne
+    @JoinColumn(name = "부서번호")
+    private Department department;
 
     public Employee() {
     }
 
     public Employee(String employeeId, String name, String englishName, String position, String gender,
                     LocalDateTime birthDate, LocalDateTime hireDate, String address, String city, String area,
-                    String telephoneNo, String managerId, String department) {
+                    String telephoneNo, String managerId, Department department) {
         this.employeeId = employeeId;
         this.name = name;
         this.englishName = englishName;
@@ -155,11 +153,11 @@ public class Employee {  /*사원번호	이름	영문이름	직위	성별	생일
         this.managerId = managerId;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 }
