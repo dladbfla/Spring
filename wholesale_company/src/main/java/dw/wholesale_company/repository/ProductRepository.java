@@ -13,4 +13,5 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("select p from Product p where p.unitPrice between :lowLimit and :highLimit")
     public List<Product> getProductByUnitPrice(@Param("lowLimit") int lowLimit, @Param("highLimit") int highLimit);
+
 }

@@ -65,8 +65,8 @@ public class ProductService {
     }
 
     //제품 제품번호가 1, 2, 4, 7, 11, 20인 제품의 모든 정보를 불러오기
-    //포스트맨에서
-    //본문에 [1, 2, 4, 7, 11, 20]
+    //포스트맨에서배열형태로 요청함
+    //본문에 [1, 2, 4, 7, 11, 20]형태로 요청
     public List<Product> getProductById(List<Long> idList){
         List<Product> products = productRepository.findAll();
         /*List<Product> newproducts = new ArrayList<>();
@@ -78,20 +78,18 @@ public class ProductService {
         }
         return newproducts;*/
 
+        //람다
         return products.stream().filter(product -> idList.contains(product.getProductId()))
                 .collect(Collectors.toList());
     }
 
     //제품 재고금액이 높은 상위 10개제품
-    public List<Product> getProductsByInventoryValueTop10(){
-        List<Product> products = productRepository.findAll().stream()
+    public List<Product> getProductsByInventoryPrice(int limit){
+        List<Product> products = productRepository.findAll();
+        return products.stream()
                 .sorted(Comparator.comparingInt((Product p) -> p.getUnitPrice() * p.getInventory()).reversed())
+                .limit(limit)
                 .collect(Collectors.toList());
-        List<Product> newProducts = new ArrayList<>();
-        for (int i = 0; i < 10; i++){
-            newProducts.add(products.get(i));
-        }
-        return newProducts;
     }
 
 }

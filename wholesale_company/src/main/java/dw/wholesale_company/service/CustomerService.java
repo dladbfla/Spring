@@ -1,21 +1,24 @@
 package dw.wholesale_company.service;
 
 import dw.wholesale_company.model.Customer;
+import dw.wholesale_company.model.Mileage;
 import dw.wholesale_company.repository.CustomerRepository;
+import dw.wholesale_company.repository.MileageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class CustomerService {
+    @Autowired
     CustomerRepository customerRepository;
     @Autowired
-    public CustomerService(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
+    MileageRepository mileageRepository;
 
     public List<Customer> getCustomerAll(){
         return customerRepository.findAll();
@@ -47,6 +50,22 @@ public class CustomerService {
         Double avg = (double) sum / (double) customers.size();
         return customers.stream().filter(c -> c.getMileage() > avg)
                 .collect(Collectors.toList());
+    }
+
+    //마일리지 등급명별로 고객수를 보이시오
+    public int getCustomerByMileageGrade(String grade){
+        List<Customer> customers = customerRepository.findAll();
+        List<Customer> newcustomers = new ArrayList<>();
+        //Stream<Mileage> limit = mileages.stream().filter(mileage -> mileage.getMileageGrade() == grade);
+        int lowLimit =  mileageRepository.findById(grade).get().getLowLimit();
+        int highLimit = mileageRepository.findById(grade).get().getHighLimit();
+        for (int i = 0; i < customers.size(); i++){
+            if (lowLimit <= customers.get(i).getMileage()
+                    && highLimit >= customers.get(i).getMileage()){
+                newcustomers.add(customers.get(i));
+            }
+        }
+        return newcustomers.size();
     }
 
 

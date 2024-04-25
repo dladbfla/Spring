@@ -50,8 +50,8 @@ public class ProductController {
         return new ResponseEntity<>(productService.getProductById(idList), HttpStatus.OK);
     }
 
-    @GetMapping("/products/InventoryValueTop10")
-    public ResponseEntity<List<Product>> getProductsByInventoryValueTop10(){
-        return new ResponseEntity<>(productService.getProductsByInventoryValueTop10(), HttpStatus.OK);
+    @GetMapping("/products/InventoryPrice/{limit}")
+    public ResponseEntity<List<Product>> getProductsByInventoryPrice(@PathVariable int limit){
+        return new ResponseEntity<>(productService.getProductsByInventoryPrice(limit), HttpStatus.OK);
     }
 }
