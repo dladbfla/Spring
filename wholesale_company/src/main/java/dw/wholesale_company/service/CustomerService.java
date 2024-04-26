@@ -1,5 +1,6 @@
 package dw.wholesale_company.service;
 
+import dw.wholesale_company.exception.ResourceNotFoundException;
 import dw.wholesale_company.model.Customer;
 import dw.wholesale_company.model.Mileage;
 import dw.wholesale_company.repository.CustomerRepository;
@@ -56,7 +57,6 @@ public class CustomerService {
     public int getCustomerByMileageGrade(String grade){
         List<Customer> customers = customerRepository.findAll();
         List<Customer> newcustomers = new ArrayList<>();
-        //Stream<Mileage> limit = mileages.stream().filter(mileage -> mileage.getMileageGrade() == grade);
         int lowLimit =  mileageRepository.findById(grade).get().getLowLimit();
         int highLimit = mileageRepository.findById(grade).get().getHighLimit();
         for (int i = 0; i < customers.size(); i++){
@@ -66,6 +66,17 @@ public class CustomerService {
             }
         }
         return newcustomers.size();
+    }
+
+    //선생님코드
+    public List<Customer> getCustomerByMileageGrade2(String grade){
+        Optional<Mileage> mileageOptional = mileageRepository.findById(grade);
+        if (mileageOptional.isEmpty()){
+            throw new ResourceNotFoundException("Mileage", "Grade", grade);
+        }
+        List<Customer> customers = customerRepository.findAll();
+        return customers.stream().filter(customer -> customer.getMileage() >= mileageOptional.get().getLowLimit()
+        &&customer.getMileage() <= mileageOptional.get().getHighLimit()).collect(Collectors.toList());
     }
 
 

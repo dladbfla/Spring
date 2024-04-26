@@ -2,7 +2,7 @@ package dw.wholesale_company.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "사원")
@@ -19,9 +19,9 @@ public class Employee {  /*사원번호	이름	영문이름	직위	성별	생일
     @Column(name = "성별")
     private String gender;
     @Column(name = "생일")
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
     @Column(name = "입사일")
-    private LocalDateTime hireDate;
+    private LocalDate hireDate;
     @Column(name = "주소")
     private String address;
     @Column(name = "도시")
@@ -40,7 +40,7 @@ public class Employee {  /*사원번호	이름	영문이름	직위	성별	생일
     }
 
     public Employee(String employeeId, String name, String englishName, String position, String gender,
-                    LocalDateTime birthDate, LocalDateTime hireDate, String address, String city, String area,
+                    LocalDate birthDate, LocalDate hireDate, String address, String city, String area,
                     String telephoneNo, String managerId, Department department) {
         this.employeeId = employeeId;
         this.name = name;
@@ -97,19 +97,19 @@ public class Employee {  /*사원번호	이름	영문이름	직위	성별	생일
         this.gender = gender;
     }
 
-    public LocalDateTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDateTime birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
-    public LocalDateTime getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(LocalDateTime hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
 

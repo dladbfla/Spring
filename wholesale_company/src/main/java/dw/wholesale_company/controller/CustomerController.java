@@ -38,7 +38,14 @@ public class CustomerController {
     }
 
     @GetMapping("/customers/mileageGrade/{grade}")
+    
     public ResponseEntity<Integer> getCustomerByMileageGrade(@PathVariable String grade){
         return new ResponseEntity<>(customerService.getCustomerByMileageGrade(grade), HttpStatus.OK);
+    }
+
+    //선생님코드
+    @GetMapping("/customers/mileageGrade2/{grade}")
+    public ResponseEntity<List<Customer>> getCustomerByMileageGrade2(@PathVariable String grade){
+        return new ResponseEntity<>(customerService.getCustomerByMileageGrade2(grade), HttpStatus.OK);
     }
 }
