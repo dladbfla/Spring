@@ -28,6 +28,7 @@ public class SecurityConfig {
         return http
                 .authorizeRequests(auth -> auth
                         .requestMatchers(  //이 주소들은
+                                new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/user/login"), //"/user/**" -> 모두 허용
                                 new AntPathRequestMatcher("/user/signup"), //"/user/*" -> 첫번째 자식들만 허용
                                 new AntPathRequestMatcher("/login")
