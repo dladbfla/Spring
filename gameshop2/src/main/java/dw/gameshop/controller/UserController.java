@@ -30,7 +30,7 @@ public class UserController {
         this.httpServletRequest = httpServletRequest;
     }
 
-    @PostMapping("signup")
+    @PostMapping("/signup")
     public ResponseEntity<String> signUp(@RequestBody UserDto userDto) {
         return new ResponseEntity<>(userService.saveUser(userDto),
                 HttpStatus.CREATED);
@@ -48,6 +48,15 @@ public class UserController {
         session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                 SecurityContextHolder.getContext());
         return ResponseEntity.ok("Success");
+    }
+
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletRequest response){
+        HttpSession session = request.getSession(false);
+        if (session != null){
+            session.invalidate();
+        }
+        return "You have been logged out.";
     }
 
     @GetMapping("current")

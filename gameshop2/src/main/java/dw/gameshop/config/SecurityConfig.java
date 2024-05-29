@@ -31,8 +31,11 @@ public class SecurityConfig {
                                 new AntPathRequestMatcher("/products/**"),
                                 new AntPathRequestMatcher("/user/login"), //"/user/**" -> 모두 허용
                                 new AntPathRequestMatcher("/user/signup"), //"/user/*" -> 첫번째 자식들만 허용
-                                new AntPathRequestMatcher("/login")
-                        ).permitAll()  //모두 접근 허용
+                                new AntPathRequestMatcher("/login"),
+                                new AntPathRequestMatcher("/gameshop/**"),
+                                new AntPathRequestMatcher("/css/**"),
+                                new AntPathRequestMatcher("/js/**")
+                                ).permitAll()  //모두 접근 허용
                         .anyRequest().authenticated())  //어떤 요청이던 모두 인증 받겠다
                 .formLogin(form->form.loginPage("/login").defaultSuccessUrl("/articles"))
                 // 정적로그인 페이지가 있는경우 "/login"으로 리다이렉트 로그인 성공시  "/articles" 페이지로 리다이렉트

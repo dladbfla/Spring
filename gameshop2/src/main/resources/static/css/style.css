@@ -97,6 +97,10 @@
     display: flex;
     align-items: center;
 }
+.btn{
+    display: flex;
+    flex-wrap: nowrap;
+}
 .login-box{
     width: 450px;
     display: grid;
@@ -122,8 +126,66 @@
     line-height: 35px;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 6px;
 }
-.loginBtn:hover{
+.signupBtn{
+    width: 100px;
+    height: 40px;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.logoutBtn{
+    width: 100px;
+    height: 40px;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.loginBtn:hover, .signupBtn:hover{
     background-color: lightblue;
     color: dodgerblue;
+}
+.user-box{
+    width: 450px;
+    margin-left: 30px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,2);
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+.signup-box{
+    width: 450px;
+    margin-left: 30px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,2);
+    font-size: 1.5rem;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+}
+.signupBtn2{
+    width: 100px;
+    height: 40px;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.hidden{
+    display: none;
 }
