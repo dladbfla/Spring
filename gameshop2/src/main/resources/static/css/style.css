@@ -116,6 +116,61 @@
     font-size: 1.3rem;
     border-radius: 5px;
 }
+.signup-box{
+    width: 450px;
+    margin-left: 30px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,2);
+    font-size: 1.5rem;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    gap: 10px;
+}
+.user-box{
+    width: 450px;
+    margin-left: 30px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 2px 2px 5px 1px rgba(0,0,0,2);
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+.low-box{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+    align-items: center;
+}
+.cart{
+    width: 100%;
+    background-color: khaki;
+    padding: 20px;
+}
+.cart-table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: white;
+}
+.cart-table td{
+    text-align: center;
+}
+thead{
+    background-color: #27ae60;
+    height: 50px;
+}
+.th:nth-child(even){
+    background-color: #eaeaed;
+}
+.imgtd{
+    width: 200px;
+}
+.totalprice{
+    display: inline-block;
+}
 .loginBtn{
     width: 100px;
     height: 40px;
@@ -162,21 +217,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 50px;
-}
-.user-box{
-    width: 450px;
-    margin-left: 30px;
-    padding: 30px;
-    background-color: white;
-    box-shadow: 2px 2px 5px 1px rgba(0,0,0,2);
-    font-size: 1.5rem;
-    border-radius: 5px;
-}
-.low-box{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 8fr 2fr;
-    align-items: center;
+    display: inline-block;
 }
 .cartBtn{
     width: 100px;
@@ -190,21 +231,6 @@
     cursor: pointer;
     margin: 0 auto;
 }
-.loginBtn:hover, .logoutBtn:hover, .signupBtn:hover, .purchaseBtn:hover, .cartBtn:hover{
-    background-color: lightblue;
-    color: dodgerblue;
-}
-.signup-box{
-    width: 450px;
-    margin-left: 30px;
-    padding: 30px;
-    background-color: white;
-    box-shadow: 2px 2px 5px 1px rgba(0,0,0,2);
-    font-size: 1.5rem;
-    border-radius: 5px;
-    display: grid;
-    grid-template-columns: 4fr 6fr;
-}
 .signupBtn2{
     width: 100px;
     height: 40px;
@@ -215,6 +241,10 @@
     line-height: 35px;
     border-radius: 5px;
     cursor: pointer;
+}
+.loginBtn:hover, .logoutBtn:hover, .signupBtn:hover, .purchaseBtn:hover, .cartBtn:hover, .signupBtn2:hover{
+    background-color: lightblue;
+    color: dodgerblue;
 }
 /*hidden 클래스 스타일은 파일의 제일 아래*/
 .hidden{

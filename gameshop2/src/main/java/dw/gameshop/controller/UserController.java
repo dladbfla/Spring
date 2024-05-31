@@ -1,5 +1,6 @@
 package dw.gameshop.controller;
 
+import dw.gameshop.dto.SessionDto;
 import dw.gameshop.dto.UserDto;
 import dw.gameshop.service.UserDetailService;
 import dw.gameshop.service.UserService;
@@ -11,7 +12,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,11 +60,14 @@ public class UserController {
     }
 
     @GetMapping("current")
-    public String getCurrentUser() {
+    public SessionDto getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
             throw new IllegalStateException("User is not authenticated");
         }
-        return authentication.getName();
+        SessionDto sessionDto = new SessionDto();
+        sessionDto.setUserId(authentication.getName());
+        sessionDto.setAuthority(authentication.getAuthorities());
+        return sessionDto;
     }
 }
