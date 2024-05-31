@@ -23,7 +23,7 @@ public class PurchaseController {
     }
 
     @PostMapping("/products/purchaselist")
-    @PreAuthorize("hasAnyRole('adimi')")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public List<Purchase> savePurchaseList(@RequestBody List<Purchase> purchaseList) {
         return purchaseService.savePurchaseList(purchaseList);
     }
