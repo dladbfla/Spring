@@ -171,6 +171,19 @@ thead{
 .totalprice{
     display: inline-block;
 }
+.dlBtn{
+    width: 100px;
+    height: 40px;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+}
 .loginBtn{
     width: 100px;
     height: 40px;
@@ -242,7 +255,7 @@ thead{
     border-radius: 5px;
     cursor: pointer;
 }
-.loginBtn:hover, .logoutBtn:hover, .signupBtn:hover, .purchaseBtn:hover, .cartBtn:hover, .signupBtn2:hover{
+.loginBtn:hover, .logoutBtn:hover, .signupBtn:hover, .purchaseBtn:hover, .cartBtn:hover, .signupBtn2:hover, .dlBtn:hover{
     background-color: lightblue;
     color: dodgerblue;
 }
